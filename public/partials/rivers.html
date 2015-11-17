@@ -1,17 +1,17 @@
 <!-- <div ng-controller="RiverController" -->
   <div class="jumbotron">
-  <ul class="nav navbar-nav">
-      <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Choose a River {{viewBarState}}<span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a href="#" ng-click="state('al')">Alabama</a></li>
-        <li><a href="#" ng-click="state('ak')">Alaska</a></li>
-        <li><a href="#" ng-click="state('az')">Arizona</a></li>
-        <li><a href="#" ng-click="state('ar')">Arkansas</a></li>
-        <li><a href="#" ng-click="state('co')">Colorado</a></li> 
+    <ul class="nav navbar-nav">
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="btn btn-primary dropdown-toggle">Choose a Ski Area {{viewBarState}}</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#" ng-click="state('vail')">Vail</a></li>
+          <li><a href="#" ng-click="state('snowmass')">Snowmass</a></li>
+          <li><a href="#" ng-click="state('telluride')">Telluride</a></li>
+          <li><a href="#" ng-click="state('keystone')">Keystone</a></li>
+          <li><a href="#" ng-click="state('breckenridge')">Breckenridge</a></li> 
+       </ul>
+      </li>
      </ul>
-    </li>
-   </ul>
  <!--  <select class="form-control">
     <option value="AL" ng-click="state('al')">Alabama</option>
     <option value="AK" ng-click="state('ak')">Alaska</option>
@@ -20,20 +20,53 @@
     <option value="CA" ng-click="state('ca')">California</option>
     <option value="CO" ng-click="state('co')">Colorado</option>
   </select> -->
-  <br>
-  <select class="form-control">
+  <ul class="nav navbar-nav">
+      <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="btn btn-primary dropdown-toggle">Choose a Class {{viewBarState}}</span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#" ng-click="class('v')">Class V</a></li>
+        <li><a href="#" ng-click="class('iv')">Class IV</a></li>
+        <li><a href="#" ng-click="class('iii')">Class III</a></li>
+        <li><a href="#" ng-click="class('ii')">Class II</a></li>
+        <li><a href="#" ng-click="class('i')">Class I</a></li> 
+     </ul>
+    </li>
+   </ul>
+<!--   <select class="form-control">
     <option value="V" ng-click="class('v')">Class V</option>
     <option value="IV" ng-click="class('iv')">Class IV</option>
     <option value="III" ng-click="class('iii')">Class III</option>
     <option value="II" ng-click="class('ii')">Class II</option>
     <option value="I" ng-click="class('i')">Class I</option>
-  </select>
+  </select> -->
 
    
 
 
   </div>
 
-   <h1 class="well"> {{viewBarState}}</h1>
+   <h1 class="well"> {{viewBarState}} {{snotelData}} </h1>
+
+   <table class="table table-hover">
+        <th>Location</th>
+        <th>Date</th>
+        <th>Total Snowfall CM</th>
+        <th>Max Temp</th>
+        <th>Min Temp</th>
+        <th>Chance of Snow</th>
+        <th>Tonight low</th>
+        <th>ICON</th>
+      <tr></tr>
+     <!--  <tr ng-repeat="flow in weather"></tr> -->
+        <td>{{site.query}}
+        <td>{{weather.date}}</td>
+        <td>{{weather.totalSnowfall_cm}}</td>
+        <td>{{weather.bottom[0].maxtempF}} </td>
+        <td>{{weather.bottom[0].mintempF}} </td>
+        <td>{{weather.chanceofsnow}}% </td>
+        <td>{{weather.hourly[7].top[0].tempF}}</td>
+        <td><img src={{weather.hourly[7].top[0].weatherIconUrl[0].value}}></td>
+      </ul>
+    </table>
 
  </div>
